@@ -37,7 +37,13 @@ pipeline{
             steps{
                 sh 'docker run -dt -p 8097:8081 --name c003 finance-me:1'
             }
-        }   
+        }
+        stage('Invoking ansible playbook'){
+            steps{
+                echo 'Running the ansible playbook on test server'
+                ansiblePlaybook become: true, disableHostKeyChecking: true, installation: 'ansible', inventory: '/etc/ansible/hosts', playbook: 'ansible-playbook.yml', vaultTmpPath: ''
+            }
+        }
     }
 }
 
