@@ -35,7 +35,7 @@ pipeline{
          }
         stage('port expose'){
             steps{
-                sh 'docker run -dt -p 8099:8081 --name c005 finance-me:1'
+                sh 'docker run -dt -p 8079:8081 --name c0 finance-me:1'
             }
         }
         stage('Invoking ansible playbook'){
